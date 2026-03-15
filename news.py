@@ -3,15 +3,29 @@ import requests
 api_key = st.secrets["NEWS_API_KEY"]
 
 st.title("WORLD'S TOP LATEST NEWS")
-con = st.selectbox(
-    "Select Country Code",
-    ["in", "us", "gb", "au", "ca"]
-)
 
-lan = st.selectbox(
-    "Select Language Code",
-    ["en", "fr", "es", "de"]
-)
+countries = {
+    "India":"in",
+    "United States":"us",
+    "United Kingdom":"gb",
+    "France":"fr",
+    "Germany":"de",
+    "Australia":"au"
+}
+
+country_name = st.selectbox("Select Country", list(countries.keys()))
+con = countries[country_name]
+
+languages = {
+    "English": "en",
+    "French": "fr",
+    "Spanish": "es",
+    "German": "de",
+    "Italian": "it",
+    "Chinese": "zh"
+}
+language_name = st.selectbox("Select Language", languages.keys())
+lan = languages[language_name]
 
 st.write("Selected Country:", con)
 st.write("Selected Language:", lan)
